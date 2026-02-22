@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Azad H.Waisy - Portfolio & CV</title>
-    <meta name="description" content="Azad H.Waisy - Windows Application & Database Developer, IT Specialist with 10+ years of experience">
+    <meta name="description" content="Azad H.Waisy - IT & Social Media Specialist and Full Stack Developer with 10+ years of experience">
     <meta property="og:title" content="Azad H.Waisy - Portfolio & CV">
-    <meta property="og:description" content="Windows Application & Database Developer, IT Specialist">
+    <meta property="og:description" content="IT & Social Media Specialist | Frontend & Full Stack Developer">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -166,6 +166,10 @@
         }
 
         .nav-logo {
+            appearance: none;
+            background: none;
+            border: none;
+            padding: 0;
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 1.75rem;
             font-weight: 800;
@@ -1176,6 +1180,59 @@
             transition: all 0.3s ease;
         }
 
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 78px;
+            left: 1rem;
+            right: 1rem;
+            z-index: 999;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem;
+            gap: 0.5rem;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-menu-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-link:hover,
+        .mobile-menu-link.active {
+            color: var(--primary);
+            background: rgba(67, 56, 202, 0.08);
+        }
+
+        .mobile-menu-download {
+            margin-top: 0.25rem;
+            justify-content: center;
+        }
+
         /* Responsive */
         @media (max-width: 1200px) {
             .hero-content {
@@ -1209,6 +1266,10 @@
 
             .mobile-menu-btn {
                 display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
             }
 
             .hero {
@@ -1342,13 +1403,14 @@
         /* Print Styles */
         @media print {
             @page {
-                size: A4 portrait;
-                margin: 5mm;
+                size: A4;
+                margin: 10mm;
             }
 
             * {
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
+                box-sizing: border-box;
             }
 
             html, body {
@@ -1358,37 +1420,39 @@
                 padding: 0;
                 background: white !important;
                 color: #1e293b !important;
-                font-size: 8pt;
-                line-height: 1.2;
+                font-size: 10pt;
+                line-height: 1.4;
                 overflow: visible !important;
             }
 
-            .nav, .fab-container, .bg-animation, .social-links, .hero-actions, .mobile-menu-btn, .btn-icon {
+            /* Hide non-essential elements */
+            .nav, .fab-container, .bg-animation, .social-links, .hero-actions, 
+            .mobile-menu-btn, .mobile-menu, .btn-icon, .footer-social, .footer-copy {
                 display: none !important;
             }
 
-            /* Hero Section - Very Compact */
+            /* Hero Section */
             .hero {
                 min-height: auto;
-                padding: 0.3rem 0;
-                margin: 0;
+                padding: 0;
+                margin: 0 0 15px 0;
+                page-break-after: avoid;
+                break-after: avoid;
             }
 
             .hero-content {
-                display: flex;
-                flex-direction: row;
-                gap: 1rem;
-                align-items: flex-start;
+                display: grid;
+                grid-template-columns: 2fr 1fr;
+                gap: 20px;
+                align-items: start;
                 text-align: left;
             }
 
             .hero-left {
-                flex: 1;
                 order: 1;
             }
 
             .hero-image {
-                flex: 0 0 120px;
                 order: 2;
             }
 
@@ -1397,49 +1461,50 @@
             }
 
             .hero-title {
-                font-size: 1.1rem;
-                margin-bottom: 0.2rem;
+                font-size: 18pt;
+                margin-bottom: 8px;
+                line-height: 1.2;
             }
 
             .hero-subtitle {
-                font-size: 0.65rem;
-                margin-bottom: 0.3rem;
-                line-height: 1.3;
+                font-size: 10pt;
+                margin-bottom: 10px;
+                line-height: 1.4;
             }
 
             .hero-stats {
                 display: flex;
-                gap: 0.8rem;
+                gap: 25px;
                 margin-bottom: 0;
                 justify-content: flex-start;
             }
 
             .stat-number {
-                font-size: 0.9rem;
+                font-size: 14pt;
             }
 
             .stat-label {
-                font-size: 0.55rem;
+                font-size: 8pt;
             }
 
-            /* Profile Card - Very Compact */
+            /* Profile Card */
             .profile-card {
-                padding: 0.5rem;
-                box-shadow: none !important;
+                padding: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
                 border: 1px solid #e2e8f0 !important;
                 background: white !important;
-                border-radius: 6px;
+                border-radius: 8px;
             }
 
             .profile-card::before {
-                height: 2px;
+                height: 3px;
             }
 
             .profile-avatar {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-                margin-bottom: 0.3rem;
+                width: 60px;
+                height: 60px;
+                font-size: 24pt;
+                margin: 0 auto 8px;
             }
 
             .profile-avatar::after {
@@ -1447,131 +1512,146 @@
             }
 
             .profile-name {
-                font-size: 0.75rem;
-                margin-bottom: 0;
+                font-size: 11pt;
+                margin-bottom: 3px;
             }
 
             .profile-role {
-                font-size: 0.55rem;
-                margin-bottom: 0.3rem;
+                font-size: 8pt;
+                margin-bottom: 8px;
+                line-height: 1.3;
             }
 
             .profile-contact {
-                gap: 0.15rem;
+                gap: 4px;
             }
 
             .contact-link {
-                padding: 0.15rem 0.3rem;
-                font-size: 0.5rem;
-                border-radius: 3px;
+                padding: 4px 6px;
+                font-size: 7pt;
+                border-radius: 4px;
             }
 
-            /* Sections - Very Minimal Spacing */
+            /* Sections */
             .section {
-                padding: 0.2rem 0;
+                padding: 12px 0;
                 margin: 0;
                 max-width: 100%;
                 display: block !important;
                 visibility: visible !important;
                 opacity: 1 !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .section-header {
-                margin-bottom: 0.2rem;
+                margin-bottom: 10px;
                 text-align: left;
+                page-break-after: avoid;
+                break-after: avoid;
             }
 
             .section-label {
-                display: none;
+                display: inline-block;
+                font-size: 7pt;
+                padding: 2px 8px;
+                margin-bottom: 4px;
             }
 
             .section-title {
-                font-size: 0.85rem;
-                margin-bottom: 0.1rem;
+                font-size: 13pt;
+                margin-bottom: 4px;
             }
 
             .section-subtitle {
-                font-size: 0.6rem;
+                font-size: 9pt;
                 margin: 0;
             }
 
             /* About Section */
             .about-grid {
                 grid-template-columns: 1fr;
-                gap: 0.3rem;
+                gap: 10px;
             }
 
             .about-text {
-                font-size: 0.6rem;
-                line-height: 1.3;
+                font-size: 9pt;
+                line-height: 1.5;
             }
 
             .about-text p {
-                margin-bottom: 0.2rem;
+                margin-bottom: 6px;
             }
 
             .highlight-cards {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.25rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
             }
 
             .highlight-card {
-                padding: 0.25rem;
-                box-shadow: none !important;
+                padding: 8px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
                 border: 1px solid #e2e8f0 !important;
                 background: white !important;
-                border-radius: 4px;
+                border-radius: 6px;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .highlight-icon {
-                width: 18px;
-                height: 18px;
-                border-radius: 4px;
-                font-size: 0.6rem;
-                margin-bottom: 0.15rem;
+                width: 28px;
+                height: 28px;
+                border-radius: 6px;
+                font-size: 11pt;
+                margin-bottom: 6px;
             }
 
             .highlight-title {
-                font-size: 0.55rem;
-                margin-bottom: 0.05rem;
+                font-size: 9pt;
+                margin-bottom: 3px;
             }
 
             .highlight-desc {
-                font-size: 0.45rem;
-                line-height: 1.1;
+                font-size: 7pt;
+                line-height: 1.3;
             }
 
-            /* Timeline - Very Compact */
+            /* Timeline */
             .timeline {
                 max-width: 100%;
+                position: relative;
             }
 
             .timeline::before {
-                left: 6px;
+                left: 8px;
+                width: 2px;
             }
 
             .timeline-item,
             .timeline-item:nth-child(even) {
-                padding-left: 20px;
+                padding-left: 30px;
                 padding-right: 0;
                 justify-content: flex-start;
-                margin-bottom: 0.25rem;
+                margin-bottom: 12px;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .timeline-dot {
-                left: 6px;
-                width: 10px;
-                height: 10px;
-                border-width: 2px;
+                left: 8px;
+                width: 14px;
+                height: 14px;
+                border-width: 3px;
             }
 
             .timeline-content {
                 width: 100%;
-                padding: 0.25rem;
-                box-shadow: none !important;
+                padding: 10px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
                 border: 1px solid #e2e8f0 !important;
                 background: white !important;
-                border-radius: 4px;
+                border-radius: 6px;
             }
 
             .timeline-content::after {
@@ -1579,212 +1659,222 @@
             }
 
             .timeline-date {
-                font-size: 0.5rem;
-                padding: 0.1rem 0.4rem;
-                margin-bottom: 0.1rem;
+                font-size: 7pt;
+                padding: 2px 8px;
+                margin-bottom: 4px;
             }
 
             .timeline-title {
-                font-size: 0.7rem;
-                margin-bottom: 0.05rem;
+                font-size: 10pt;
+                margin-bottom: 2px;
             }
 
             .timeline-company {
-                font-size: 0.6rem;
-                margin-bottom: 0.1rem;
+                font-size: 8pt;
+                margin-bottom: 6px;
             }
 
             .timeline-desc {
-                font-size: 0.55rem;
-                line-height: 1.2;
+                font-size: 8pt;
+                line-height: 1.4;
             }
 
             .timeline-desc li {
-                margin-bottom: 0.05rem;
-                padding-left: 0.6rem;
+                margin-bottom: 3px;
+                padding-left: 12px;
             }
 
             .timeline-desc li::before {
-                font-size: 0.7rem;
+                font-size: 9pt;
             }
 
-            /* Skills - Very Compact Grid */
+            /* Skills */
             .skills-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 0.25rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
 
             .skill-category {
-                padding: 0.25rem;
-                box-shadow: none !important;
+                padding: 10px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.1) !important;
                 border: 1px solid #e2e8f0 !important;
                 background: white !important;
-                border-radius: 4px;
+                border-radius: 6px;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .skill-category-header {
-                margin-bottom: 0.2rem;
+                margin-bottom: 8px;
             }
 
             .skill-category-icon {
-                width: 16px;
-                height: 16px;
-                border-radius: 3px;
-                font-size: 0.55rem;
+                width: 26px;
+                height: 26px;
+                border-radius: 5px;
+                font-size: 11pt;
             }
 
             .skill-category-title {
-                font-size: 0.55rem;
+                font-size: 9pt;
             }
 
             .skill-item {
-                margin-bottom: 0.1rem;
+                margin-bottom: 6px;
             }
 
             .skill-header {
-                margin-bottom: 0.05rem;
+                margin-bottom: 3px;
             }
 
             .skill-name {
-                font-size: 0.5rem;
+                font-size: 8pt;
             }
 
             .skill-percent {
-                font-size: 0.45rem;
+                font-size: 7pt;
             }
 
             .skill-bar {
-                height: 3px;
+                height: 5px;
             }
 
             .skill-progress {
-                width: var(--skill-width) !important;
+                width: var(--skill-width, 80%) !important;
             }
 
-            /* Languages - Very Compact */
+            .skill-progress[data-skill="95"] { --skill-width: 95%; }
+            .skill-progress[data-skill="90"] { --skill-width: 90%; }
+            .skill-progress[data-skill="85"] { --skill-width: 85%; }
+            .skill-progress[data-skill="80"] { --skill-width: 80%; }
+            .skill-progress[data-skill="75"] { --skill-width: 75%; }
+            .skill-progress[data-skill="70"] { --skill-width: 70%; }
+
+            /* Languages */
             .languages-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.25rem;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
             }
 
             .language-card {
-                padding: 0.25rem;
-                box-shadow: none !important;
+                padding: 8px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
                 border: 1px solid #e2e8f0 !important;
                 background: white !important;
-                border-radius: 4px;
+                border-radius: 6px;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .language-flag {
-                width: 20px;
-                height: 20px;
-                border-radius: 3px;
-                font-size: 0.5rem;
-                margin-bottom: 0.1rem;
+                width: 32px;
+                height: 32px;
+                border-radius: 5px;
+                font-size: 9pt;
+                margin-bottom: 0;
             }
 
             .language-info {
-                text-align: center;
+                text-align: left;
             }
 
             .language-name {
-                font-size: 0.6rem;
-                margin-bottom: 0;
+                font-size: 9pt;
+                margin-bottom: 2px;
             }
 
             .language-level {
-                font-size: 0.45rem;
-                margin-bottom: 0.1rem;
+                font-size: 7pt;
+                margin-bottom: 4px;
             }
 
             .lang-dot {
-                width: 4px;
-                height: 4px;
+                width: 6px;
+                height: 6px;
             }
 
-            /* Certifications - Very Compact */
+            /* Certifications & Education */
             .cert-grid {
+                display: grid;
                 grid-template-columns: repeat(2, 1fr);
-                gap: 0.2rem;
+                gap: 8px;
             }
 
             .cert-card {
-                padding: 0.2rem;
-                box-shadow: none !important;
+                padding: 8px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1) !important;
                 border: 1px solid #e2e8f0 !important;
                 background: white !important;
-                border-radius: 3px;
-                border-left-width: 2px;
-                gap: 0.2rem;
+                border-radius: 5px;
+                border-left-width: 3px;
+                gap: 8px;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .cert-icon {
-                width: 16px;
-                height: 16px;
-                border-radius: 3px;
-                font-size: 0.5rem;
+                width: 26px;
+                height: 26px;
+                border-radius: 5px;
+                font-size: 10pt;
             }
 
             .cert-content h4 {
-                font-size: 0.5rem;
-                margin-bottom: 0;
+                font-size: 8pt;
+                margin-bottom: 2px;
+                line-height: 1.3;
             }
 
             .cert-content p {
-                font-size: 0.4rem;
-                line-height: 1.1;
+                font-size: 7pt;
+                line-height: 1.3;
             }
 
-            /* Footer - Very Compact */
+            /* Footer */
             .footer {
-                padding: 0.3rem;
-                margin-top: 0.3rem;
+                padding: 15px;
+                margin-top: 15px;
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .footer-logo {
-                font-size: 0.8rem;
+                font-size: 14pt;
+                margin-bottom: 5px;
             }
 
             .footer-text {
-                font-size: 0.55rem;
-                margin-bottom: 0.2rem;
+                font-size: 9pt;
+                margin-bottom: 0;
             }
 
-            .footer-social {
-                gap: 0.2rem;
-                margin-bottom: 0.2rem;
+            /* Page Break Control - Allow breaking between major sections */
+            .timeline-item {
+                page-break-inside: avoid;
+                break-inside: avoid;
             }
 
-            .footer-social a {
-                width: 20px;
-                height: 20px;
-                border-radius: 3px;
-                font-size: 0.6rem;
-            }
-
-            .footer-copy {
-                font-size: 0.45rem;
-                padding-top: 0.2rem;
-            }
-
-            /* Page Break Control */
-            .timeline-item,
             .skill-category,
             .cert-card,
             .highlight-card,
             .language-card {
-                break-inside: avoid;
                 page-break-inside: avoid;
+                break-inside: avoid;
             }
 
+            /* Allow sections to break but keep headers with content */
             section {
-                break-before: auto;
                 page-break-before: auto;
-                break-inside: auto;
+                break-before: auto;
                 page-break-inside: auto;
-                display: block !important;
-                visibility: visible !important;
-                opacity: 1 !important;
+                break-inside: auto;
+            }
+
+            .section-header {
+                page-break-after: avoid;
+                break-after: avoid;
             }
 
             /* Hide decorative elements */
@@ -1797,6 +1887,55 @@
             /* Ensure all content is visible */
             * {
                 overflow: visible !important;
+            }
+
+            /* Prevent text from being cut off */
+            p, li, div {
+                orphans: 3;
+                widows: 3;
+            }
+
+            /* Image handling */
+            img {
+                max-width: 100% !important;
+                height: auto !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            /* Ensure grid items stay together */
+            .skills-grid, .cert-grid, .languages-grid, .highlight-cards {
+                display: grid !important;
+            }
+
+            /* Force background colors for skill bars */
+            .skill-progress {
+                background: linear-gradient(90deg, #4338ca, #6366f1) !important;
+            }
+
+            /* Ensure timeline line is visible */
+            .timeline::before {
+                background: linear-gradient(to bottom, #4338ca, #ec4899) !important;
+            }
+
+            /* Better list handling */
+            ul {
+                margin: 0;
+                padding-left: 15px;
+            }
+
+            li {
+                margin-bottom: 2px;
+            }
+
+            /* Body printing state */
+            body.is-printing {
+                overflow: visible !important;
+            }
+
+            body.is-printing * {
+                animation: none !important;
+                transition: none !important;
             }
         }
 
@@ -1836,7 +1975,7 @@
     <!-- Navigation -->
     <nav class="nav" id="navbar">
         <div class="nav-content">
-            <div class="nav-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">AZAD.W</div>
+            <button class="nav-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" type="button" aria-label="Back to top">AZAD H.Waisy</button>
             <ul class="nav-links">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
@@ -1847,11 +1986,11 @@
                 <button class="btn-icon" onclick="toggleTheme()" aria-label="Toggle theme">
                     <i class="fas fa-moon" id="theme-icon"></i>
                 </button>
-                <button class="btn-primary" onclick="window.print()">
+                <button class="btn-primary" onclick="downloadCV()">
                     <i class="fas fa-download"></i>
                     Download CV
                 </button>
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <button class="mobile-menu-btn" id="mobileMenuButton" onclick="toggleMobileMenu()" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle mobile menu">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -1859,6 +1998,16 @@
             </div>
         </div>
     </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#about" class="mobile-menu-link nav-link">About</a>
+        <a href="#experience" class="mobile-menu-link nav-link">Experience</a>
+        <a href="#skills" class="mobile-menu-link nav-link">Skills</a>
+        <a href="#certifications" class="mobile-menu-link nav-link">Certifications</a>
+        <button class="btn-primary mobile-menu-download" onclick="downloadCV()" type="button">
+            <i class="fas fa-download"></i>
+            Download CV
+        </button>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1872,7 +2021,7 @@
                     Hi, I'm <span class="gradient-text">Azad H.Waisy</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Windows Application & Database Developer | IT Specialist with 10+ years of experience creating innovative solutions for NGOs, government organizations, and enterprises.
+                    IT & Social Media Specialist | Frontend & Full Stack Developer | C# | .NET | ASP.NET | Blazor | 10+ years delivering solutions for NGOs, government organizations, and businesses.
                 </p>
                 <div class="hero-stats">
                     <div class="stat-item">
@@ -1893,7 +2042,7 @@
                         <i class="fas fa-briefcase"></i>
                         View Experience
                     </button>
-                    <button class="btn-secondary" onclick="window.print()">
+                    <button class="btn-secondary" onclick="downloadCV()">
                         <i class="fas fa-download"></i>
                         Download CV
                     </button>
@@ -1902,10 +2051,10 @@
             <div class="hero-image">
                 <div class="profile-card">
                     <div class="profile-avatar">
-                        <img src="azad.jpg" alt="Azad H.Waisy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                        <img src="img/azadpic.jpg" alt="Azad H.Waisy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
                     </div>
                     <h3 class="profile-name">Azad H.Waisy</h3>
-                    <p class="profile-role">IT Specialist & Developer</p>
+                    <p class="profile-role">IT & Social Media Specialist | Full Stack Developer</p>
                     <div class="profile-contact">
                         <a href="tel:+9647504518271" class="contact-link">
                             <i class="fas fa-phone"></i>
@@ -1915,16 +2064,15 @@
                             <i class="fas fa-envelope"></i>
                             Azad_haji@icloud.com
                         </a>
-                        <a href="#" class="contact-link" onclick="return false;">
+                        <a href="https://maps.google.com/?q=Duhok,+Iraq" class="contact-link" target="_blank" rel="noopener noreferrer">
                             <i class="fas fa-map-marker-alt"></i>
                             Duhok, Iraq
                         </a>
                     </div>
                     <div class="social-links">
-                        <a href="#" class="social-link" title="LinkedIn" onclick="return false;"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link" title="GitHub" onclick="return false;"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link" title="Twitter" onclick="return false;"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.facebook.com/azad.haji3/" class="social-link" title="Facebook" onclick="return false;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.facebook.com/azad.haji3/" class="social-link" title="Facebook" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><i class="fab fa-facebook-f"></i></a>
+                        <a href="mailto:Azad_haji@icloud.com" class="social-link" title="Email" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                        <a href="tel:+9647504518271" class="social-link" title="Phone" aria-label="Call phone"><i class="fas fa-phone"></i></a>
                     </div>
                 </div>
             </div>
@@ -1940,8 +2088,8 @@
         </div>
         <div class="about-grid">
             <div class="about-text">
-                <p>Since 2016, I've been creating database systems and Windows programs for large companies, NGOs, hospitals, and government Directorates. My journey began with hardware and software maintenance, evolving into full-scale IT management and custom software development.</p>
-                <p>I've successfully managed IT infrastructure for organizations spanning 27+ camp locations, overseeing 150+ computers and complex network systems. My expertise includes database design, Windows application development using .NET technologies, and comprehensive IT support.</p>
+                <p>Since 2016, I've been creating database systems and Windows and web applications for large companies, NGOs, hospitals, and government Directorates. My journey began with hardware and software maintenance, evolving into full-scale IT management and custom software web application development.</p>
+                <p>I've successfully managed IT infrastructure for organizations spanning 25+ camp locations, overseeing 150+ computers and complex network systems. My expertise includes database design, Windows application & web application development using .NET technologies, and comprehensive IT support.</p>
                 <p>Recognized for successfully completing complex database projects and providing comprehensive IT solutions that improve operational efficiency and data management.</p>
             </div>
             <div class="highlight-cards">
@@ -1988,6 +2136,21 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content">
+                    <span class="timeline-date">Jul 2024 - Present</span>
+                    <h3 class="timeline-title">Owner</h3>
+                    <p class="timeline-company">Fire Phone - Duhok</p>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Managed daily IT operations, device support, and store systems</li>
+                            <li>Managed social media pages and created promotional content</li>
+                            <li>Increased visibility, engagement, and sales through online platforms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
                     <span class="timeline-date">Sep 2021 - Feb 2025</span>
                     <h3 class="timeline-title">Reporting Assistant</h3>
                     <p class="timeline-company">International Organization for Migration (IOM) - Duhok</p>
@@ -2013,6 +2176,36 @@
                             <li>Responded to maintenance requests from all departments and camps</li>
                             <li>Created database entry systems and custom programs for the directorate</li>
                             <li>Implemented IT policies and security protocols</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2019 - 2022</span>
+                    <h3 class="timeline-title">ERP Developer</h3>
+                    <p class="timeline-company">Talal Office (CPA)</p>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Designed and implemented ERP systems aligned with accounting workflows</li>
+                            <li>Built modules for daily accounting operations and reporting processes</li>
+                            <li>Improved business process efficiency with custom financial workflows</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-date">2016 - Present</span>
+                    <h3 class="timeline-title">Freelance Software & ERP Developer</h3>
+                    <p class="timeline-company">Freelance / Multiple Clients</p>
+                    <div class="timeline-desc">
+                        <ul>
+                            <li>Developed 20+ Windows and web applications for business operations</li>
+                            <li>Built ERP and business systems using WPF, ASP.NET, Blazor, and SQL Server</li>
+                            <li>Delivered custom database systems for NGOs, hospitals, and directorates</li>
                         </ul>
                     </div>
                 </div>
@@ -2497,14 +2690,13 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-logo">AZAD.W</div>
-            <p class="footer-text">Windows Application & Database Developer | IT Specialist</p>
+            <p class="footer-text">IT & Social Media Specialist | Frontend & Full Stack Developer</p>
             <div class="footer-social">
-                <a href="#" onclick="return false;"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" onclick="return false;"><i class="fab fa-github"></i></a>
-                <a href="#" onclick="return false;"><i class="fab fa-twitter"></i></a>
-                <a href="mailto:Azad_haji@icloud.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/azad.haji3/" target="_blank" rel="noopener noreferrer" aria-label="Facebook profile"><i class="fab fa-facebook-f"></i></a>
+                <a href="mailto:Azad_haji@icloud.com" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+9647504518271" aria-label="Call phone"><i class="fas fa-phone"></i></a>
             </div>
-            <p class="footer-copy">© 2025 Azad H.Waisy. All rights reserved.</p>
+            <p class="footer-copy">&copy; 2026 Azad H.Waisy. All rights reserved.</p>
         </div>
     </footer>
 
@@ -2513,12 +2705,15 @@
         <button class="fab fab-secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Go to top">
             <i class="fas fa-arrow-up"></i>
         </button>
-        <button class="fab" onclick="window.print()" title="Download CV">
+        <button class="fab" onclick="downloadCV()" title="Download CV">
             <i class="fas fa-download"></i>
         </button>
     </div>
 
     <script>
+        const CV_FILE_PATH = 'Azad_H_Waisy_FINAL_IT_Social_CV_COMPLETE.pdf';
+        const CV_DOWNLOAD_FILENAME = 'Azad_H_Waisy_CV.pdf';
+
         // Theme Toggle
         function toggleTheme() {
             const body = document.body;
@@ -2557,7 +2752,7 @@
 
             // Update active nav link
             const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-menu-link');
             
             let current = '';
             sections.forEach(section => {
@@ -2662,12 +2857,87 @@
             sectionObserver.observe(header);
         });
 
-        // Mobile menu toggle (placeholder for future implementation)
-        function toggleMobileMenu() {
-            // Could implement mobile menu overlay here
-            console.log('Mobile menu clicked');
+        function downloadCV() {
+            const downloadLink = document.createElement('a');
+            downloadLink.href = CV_FILE_PATH;
+            downloadLink.download = CV_DOWNLOAD_FILENAME;
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
         }
+
+        function toggleMobileMenu(forceClose = false) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileButton = document.getElementById('mobileMenuButton');
+            if (!mobileMenu || !mobileButton) {
+                return;
+            }
+
+            const shouldOpen = forceClose ? false : !mobileMenu.classList.contains('open');
+            mobileMenu.classList.toggle('open', shouldOpen);
+            mobileButton.classList.toggle('active', shouldOpen);
+            mobileButton.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+        }
+
+        document.querySelectorAll('.mobile-menu-link').forEach(link => {
+            link.addEventListener('click', () => toggleMobileMenu(true));
+        });
+
+        const mobileDownloadButton = document.querySelector('.mobile-menu-download');
+        if (mobileDownloadButton) {
+            mobileDownloadButton.addEventListener('click', () => toggleMobileMenu(true));
+        }
+
+        document.addEventListener('click', event => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileButton = document.getElementById('mobileMenuButton');
+            if (!mobileMenu || !mobileButton || !mobileMenu.classList.contains('open')) {
+                return;
+            }
+
+            if (!mobileMenu.contains(event.target) && !mobileButton.contains(event.target)) {
+                toggleMobileMenu(true);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 968) {
+                toggleMobileMenu(true);
+            }
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') {
+                toggleMobileMenu(true);
+            }
+        });
+
+        function preparePrintLayout() {
+            document.body.classList.add('is-printing');
+
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const skill = bar.getAttribute('data-skill');
+                if (skill) {
+                    bar.style.setProperty('--skill-width', skill + '%');
+                    bar.style.width = skill + '%';
+                }
+            });
+
+            document.querySelectorAll('.timeline-item, .section-header').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }
+
+        // Handle beforeprint event (Ctrl+P)
+        window.addEventListener('beforeprint', function() {
+            preparePrintLayout();
+        });
+
+        // Handle afterprint event
+        window.addEventListener('afterprint', function() {
+            document.body.classList.remove('is-printing');
+        });
     </script>
 </body>
 </html>
-
